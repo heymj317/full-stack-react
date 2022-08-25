@@ -3,6 +3,7 @@ import './App.css';
 import { Component, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import Form from './Form';
+import queryHandler from './queryHandler.js'
 
 export default class App extends Component {
   constructor(props) {
@@ -17,14 +18,14 @@ export default class App extends Component {
   // const onError = (errors, e) => console.log(errors, e);
 
 
-
   handleSubmit(event) {
     event.preventDefault();
-    let temp = event.nativeEvent
-    console.log('from app.js handleSubmit: ', event.nativeEvent.target[1].value);
-    console.log('from app.js useEffect: ', this.state.url);
+    let queryString = event.nativeEvent.target[1].value;
+    console.log('app.js: ', queryString)
+    queryHandler(queryString)
 
   }
+
 
   render() {
     return (
