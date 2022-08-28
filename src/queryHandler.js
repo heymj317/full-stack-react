@@ -5,14 +5,15 @@ function queryHandler(userInput) {
 
     if (isValidUrl(userInput)) { //USER INPUT VALIDATION
         alert("Searching!");
-        fetch(`${searchTerm}` /*`/query/${searchTerm}`*/)
+        fetch(`http://localhost:5049/query/${searchTerm}`)
+            .then((response) => response.text())
             .then((data) => { //RESTAPI QUERY (SEARCH DB FIRST, SCRAPE IF NEEDED)
                 return data;
             }).then(data => { //
                 let paths = data;
                 let result = [];
                 let level = { result };
-                console.log(data);
+                // console.log('queyHandler.js data: ', data);
                 //HIERARCHY/TREE BUILDER------
                 // for (var i = 0; i < data.length; i++) {
                 //     const url = data[i]['url'];
@@ -26,7 +27,7 @@ function queryHandler(userInput) {
                 //     }, level)
                 // }
 
-                console.log(result)
+                console.log('queryHandler.js data: ', data)
                 nodes = result;
 
                 // //MANIPULATE DOM AND DISPLAY
