@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv"); //Probramatically get env variables from .env file
 const htmlparser2 = require("htmlparser2");
-//const fetch = require("node-fetch");
+const fetch = require("node-fetch");
 const urlParser = require('urlParser');
 
 
@@ -21,8 +21,9 @@ const pool = new pg.Pool({
 });
 
 //MIDDLEWARE
-app.use(express.static('public')); //static routes
+//app.use(express.static('public')); //static routes
 app.use(express.json()); //json parser
+app.use(cors());
 
 
 //---GET REQUEST----
